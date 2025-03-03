@@ -23,7 +23,7 @@ LinkedList::~LinkedList(){ // destructor
     delete_entire_linked_list();
 }
 
-LinkedList::LinkedList(LinkedList&& other) : root(other.root) { // move constructor
+LinkedList::LinkedList(LinkedList&& other) : root(std::move(other.root)) { // move constructor
     other.root = nullptr; // move and null the original
 }
 
@@ -34,7 +34,7 @@ LinkedList& LinkedList::operator=(LinkedList&& other) { // move copy constructor
 
     delete_entire_linked_list();
 
-    root = other.root; // moving
+    root = std::move(other.root); // moving
     other.root = nullptr; // original is null
 
     return *this;
