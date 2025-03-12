@@ -16,7 +16,7 @@ class LinkedList {
     ~LinkedList(); // destructor
 
     LinkedList(LinkedList&& other); // move constructor
-    LinkedList& operator=(LinkedList&& other); // move copy constructor
+    LinkedList& operator=(LinkedList&& other); // move copy constructor / operator
 
     // given functions (defined)
     void insertAtBeginning(int val);

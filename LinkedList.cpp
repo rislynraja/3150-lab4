@@ -27,15 +27,19 @@ LinkedList::LinkedList(LinkedList&& other) : root(std::move(other.root)) { // mo
     other.root = nullptr; // move and null the original
 }
 
-LinkedList& LinkedList::operator=(LinkedList&& other) { // move copy constructor
-    if (this == &other) { // they are both the same already
-        return *this;
+LinkedList& LinkedList::operator=(LinkedList&& other) { // move copy constructor / operator
+    if (this != &other) { // they are not the same already
+        delete_entire_linked_list(); // clearing the current one so it can be replaced LL_1
+
+        Node* temp = other.root; // other's
+        Node** temp2 = &root; // current's 
+
+        while(temp) {
+            *temp2 = new Node(std::move(temp->data)); // moving data to new node
+            temp = temp->next; // next node
+            temp2 = &((*temp2)->next); // setting next
+        }
     }
-
-    delete_entire_linked_list();
-
-    root = std::move(other.root); // moving
-    other.root = nullptr; // original is null
 
     return *this;
 }

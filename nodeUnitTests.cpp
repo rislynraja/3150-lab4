@@ -171,7 +171,7 @@ TEST_CASE("testing move constructor") {
     CHECK(test14.getLastElement() == nullptr); // orignal null
 }
 
-TEST_CASE("testing move copy constructor") {
+TEST_CASE("testing move operator") {
     LinkedList test15;
     test15.insertAtEnd(4);
     test15.insertAtEnd(5);
@@ -186,6 +186,6 @@ TEST_CASE("testing move copy constructor") {
     CHECK(test16.get_linked_list_data_item_value(1) == 5);
     CHECK(test16.get_linked_list_data_item_value(2) == 6);
 
-    CHECK(test15.getLastElement() == nullptr); 
+    CHECK(test15.getLastElement() != nullptr); 
 
 }
